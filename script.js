@@ -7,24 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const text = textInput.value.trim();
 
         if (text !== "") {
-            const p = document.createElement("p");
-            p.textContent = generateLyrics(text, 5);
-            output.appendChild(p);
+            const div = document.createElement("div");
+            div.innerHTML = generateLyrics(text, 5);
+            output.appendChild(div);
             textInput.value = ""; // Clear the textarea
         }
     });
 });
-
-function assembleVerse(){
-    let verse = []
-    for(var i = 0; i < 6; i++) {
-        let len = Math.floor(Math.random() * 25) + 5;
-        let line = writeLine(len)
-        verse.push(line)
-    }
-    return verse
-  }
-  
 
 function  parseText(text){
     return text
@@ -32,6 +21,8 @@ function  parseText(text){
             .replace(/[^a-z\s]/ig, "")
             .split(' ');
   }
+
+//* Student Code Here */ 
 
 function generateWordpairs(corpus) {
     // Our object that has word pairs stored as an object
@@ -79,7 +70,7 @@ function writeLine(corpus, min_length) {
         }
     }
 
-    return phrase.join(' ');
+    return `<p> ${phrase.join(' ')} </p>`;
 }
 
 function generateLyrics(corpus, lines) {
